@@ -12,6 +12,8 @@ struct ContentView: View {
         VStack(spacing: 0) {
             Header()
             
+            Story()
+            
             Spacer()
         }
     }
@@ -38,5 +40,26 @@ struct Header: View {
         }
         .padding(.horizontal, 15)
         .padding(.vertical, 3)
+    }
+}
+
+struct Story: View {
+    var body: some View {
+        VStack {
+            VStack {
+                Image("profile")
+                    .resizable()
+                    .frame(width: 60, height: 60)
+                    .cornerRadius(50)
+            }
+            .overlay(
+                Circle()
+                    .stroke(LinearGradient(colors: [.red, .purple, .red, .orange, .yellow, .orange], startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2.3)
+                    .frame(width: 68, height: 68)
+            )
+            
+            Text("Willie Yam")
+                .font(.caption)
+        }
     }
 }
