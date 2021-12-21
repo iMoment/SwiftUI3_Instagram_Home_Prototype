@@ -12,13 +12,17 @@ struct ContentView: View {
         VStack(spacing: 0) {
             Header()
             
-            Stories()
+            ScrollView(.vertical, showsIndicators: false) {
+                Stories()
+                
+                Divider()
+                
+                UserPost()
+                
+                UserPost(userImage: "dog", userDescription: "Almost 2 years old, I love her so much.")
+            }
             
-            Divider()
-            
-            UserPost()
-            
-            Spacer()
+            TabBar()
         }
     }
 }
@@ -115,9 +119,11 @@ struct PostHeader: View {
 }
 
 struct PostContent: View {
+    var userImage: String = "profile"
+    
     var body: some View {
         VStack(spacing: 0) {
-            Image("profile")
+            Image(userImage)
                 .resizable()
                 .frame(width: .infinity)
                 .aspectRatio(contentMode: .fit)
@@ -140,18 +146,21 @@ struct PostContent: View {
 }
 
 struct UserPost: View {
+    var userImage: String = "profile"
+    var userDescription: String = "I miss living in Seoul, South Korea"
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             PostHeader()
             
-            PostContent()
+            PostContent(userImage: userImage)
             
             Text("Liked by Meng To and others")
                 .font(.footnote)
                 .frame(width: .infinity)
                 .padding(.horizontal, 12)
             
-            Text("I miss living in Seoul, South Korea")
+            Text(userDescription)
                 .font(.footnote)
                 .frame(width: .infinity)
                 .padding(.horizontal, 12)
@@ -179,6 +188,39 @@ struct UserPost: View {
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 9)
+        }
+    }
+}
+
+struct TabBar: View {
+    var body: some View {
+        VStack(spacing: 0) {
+            Divider()
+            
+            HStack {
+                Image("home")
+                
+                Spacer()
+                
+                Image("search")
+                
+                Spacer()
+                
+                Image("reels")
+                
+                Spacer()
+                
+                Image("shop")
+                
+                Spacer()
+                
+                Image("profile")
+                    .resizable()
+                    .frame(width: 21, height: 21)
+                    .cornerRadius(50)
+            }
+            .padding(.horizontal, 25)
+            .padding(.top, 10)
         }
     }
 }
