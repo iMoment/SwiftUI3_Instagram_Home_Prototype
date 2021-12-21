@@ -16,7 +16,7 @@ struct ContentView: View {
             
             Divider()
             
-            PostHeader()
+            UserPost()
             
             Spacer()
         }
@@ -111,5 +111,74 @@ struct PostHeader: View {
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 8)
+    }
+}
+
+struct PostContent: View {
+    var body: some View {
+        VStack(spacing: 0) {
+            Image("profile")
+                .resizable()
+                .frame(width: .infinity)
+                .aspectRatio(contentMode: .fit)
+            
+            HStack {
+                HStack(spacing: 10) {
+                    Image("heart")
+                    Image("comment")
+                    Image("share")
+                }
+                
+                Spacer()
+                
+                Image("bookmark")
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 9)
+        }
+    }
+}
+
+struct UserPost: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            PostHeader()
+            
+            PostContent()
+            
+            Text("Liked by Meng To and others")
+                .font(.footnote)
+                .frame(width: .infinity)
+                .padding(.horizontal, 12)
+            
+            Text("I miss living in Seoul, South Korea")
+                .font(.footnote)
+                .frame(width: .infinity)
+                .padding(.horizontal, 12)
+            
+            HStack {
+                HStack(spacing: 7) {
+                    Image("profile")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .cornerRadius(50)
+                    
+                    Text("Add comment...")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                
+                Spacer()
+                
+                HStack {
+                    Text("😍")
+                    Text("😂")
+                    Image(systemName: "plus.circle")
+                        .foregroundColor(.secondary)
+                }
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 9)
+        }
     }
 }
