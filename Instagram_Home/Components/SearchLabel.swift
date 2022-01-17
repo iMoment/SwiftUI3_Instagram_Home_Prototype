@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchLabel: View {
-    var labelText: String = "Design"
+    var labelText: String = "SwiftUI3"
     
     var body: some View {
         Text(labelText)
