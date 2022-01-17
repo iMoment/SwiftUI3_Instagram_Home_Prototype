@@ -28,7 +28,9 @@ struct SearchView: View {
                 .frame(width: .infinity, height: 38)
             }
             
-            Spacer()
+            ScrollView(.vertical, showsIndicators: false) {
+                SearchPhotoGrid()
+            }
         }
     }
 }
